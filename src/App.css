@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.main_page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.main_header {
+  align-items: center;
+  transform: translateY(-50%);
+  top: 50%;
+  position: absolute;
+  width: calc(100% - 200px);
+  color: #fff;
+  padding: 0 100px;
+  text-align: center;
+}
+
+.main-header label {
+  font-size: 20px;
+  opacity: 0;
+  display: inline-block;
+}
+
+@keyframes anim {
+  0% {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+  33% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  66% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+}
+
+@-webkit-keyframes anim {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-300px);
+  }
+  33% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+  }
+  66% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(300px);
+  }
+}
+
+.main_header_image {
+  background-image: url("../static/main_image.jpg");
+  background-size: 100% 50vh;
+  height: 50vh;
+  width: 100%;
+  display: flex;
+}
+.movie_item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+  padding: 10px;
+  min-width: 18%;
+  background-color: black;
+  color: white;
+  box-shadow: 1px 3px 7px #e8e8e8;
+}
+.movie_item > img {
+  border-radius: 15%;
+  padding: 5px;
+}
+.movie_item:hover {
+  background-color: #b1aaaa;
+  transform: rotateX(10deg);
+}
+.movie_item_content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.movie_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  border: 3px solid black;
+  padding: 10px;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+}
+
+.genre_name {
+  display: flex;
+  justify-content: center;
+}
+
+.loading {
+  text-align: center;
+  font-size: 15px;
+}
+
+.movie_details_inf {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid blue;
+}
+.movie_inf {
+  display: flex;
+  flex-direction: raw;
+  border: 3px solid blue;
+}
+.movie_detail {
+  display: flex;
+  flex-direction: raw;
+  border: 3px solid blue;
+}
+
+.comment__submit {
+  display: flex;
+  flex-direction: row;
+  border: 3px solid #96d35f;
+  width: 240px;
+}
+
+.movie_details_comment {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #96d35f;
+  width: 240px;
+}
+
+.footer {
+  background-size: 100% 50vh;
+  height: 50vh;
+  width: 100%;
+  background-image: url("../static/footer_image.png");
+}
+
+.genre_name {
+  font-size: 20px;
+  padding: 15px;
+  background-color: black;
+  color: white;
+}
