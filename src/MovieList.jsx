@@ -6,7 +6,6 @@ import Loading from "./Loading.jsx";
 export default function MovieList(props) {
   const [movies, setMovies] = useState([]);
 
-  //useEffect 형식
   useEffect(() => {
     fetch(props.API)
       .then((res) => res.json())
@@ -16,10 +15,8 @@ export default function MovieList(props) {
       .catch((error) => {
         console.error("Error fetching movie data:", error);
       });
-  }, []);
+  }, [props.API]);
 
-  //json은 데이터의 형식
-  // {  key: value , key: value}
   if (movies.length === 0) {
     return <Loading />;
   } else {

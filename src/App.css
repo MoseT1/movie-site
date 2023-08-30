@@ -1,6 +1,9 @@
+@import url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1173082/Voga.css');
+
 * {
   margin: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 .main_page {
@@ -11,63 +14,23 @@
   width: 100%;
 }
 
+.headerlogo {
+  width: 160px;
+}
 .main_header {
   align-items: center;
-  transform: translateY(-50%);
-  top: 50%;
-  position: absolute;
-  width: calc(100% - 200px);
-  color: #fff;
-  padding: 0 100px;
-  text-align: center;
+  justify-content:center;
+  margin: auto;
 }
 
-.main-header label {
-  font-size: 20px;
-  opacity: 0;
-  display: inline-block;
-}
 
-@keyframes anim {
-  0% {
-    opacity: 0;
-    transform: translateX(-300px);
-  }
-  33% {
-    opacity: 1;
-    transform: translateX(0px);
-  }
-  66% {
-    opacity: 1;
-    transform: translateX(0px);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(300px);
-  }
-}
 
-@-webkit-keyframes anim {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-300px);
-  }
-  33% {
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-  }
-  66% {
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-  }
-  100% {
-    opacity: 0;
-    -webkit-transform: translateX(300px);
-  }
+.header {
+  background-color: black;
+  padding-bottom: 20px;
 }
-
 .main_header_image {
-  background-image: url("../static/main_image.jpg");
+  background-image: url("../static/mainimg.png");
   background-size: 100% 50vh;
   height: 50vh;
   width: 100%;
@@ -82,20 +45,26 @@
   min-width: 18%;
   background-color: black;
   color: white;
-  box-shadow: 1px 3px 7px #e8e8e8;
+  box-shadow: 1px 1px 7px #e8e8e8;
 }
 .movie_item > img {
   border-radius: 15%;
   padding: 5px;
 }
 .movie_item:hover {
-  background-color: #b1aaaa;
+  background-color: #8f8f8f;
   transform: rotateX(10deg);
 }
 .movie_item_content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.movie_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .movie_list {
@@ -109,56 +78,428 @@
   justify-content: center;
 }
 
+.movie_poster {
+  width: 300px;
+  margin: auto;
+}
 .genre_name {
   display: flex;
   justify-content: center;
+  padding-top:50px;
+  padding-bottom:40px;
+  height:100px;
+  color:white;
+  font-size:30px;
+  font-weight:bold;
+}
+.genre_buttons > button {
+  background: #303030;
+  font-size:15px;
+}
+
+.genre_buttons {
+  display: flex;
+  flex-direction: row; /* 가로로 배치 */
+  justify-content: center; /* 가로 가운데 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
+  flex-wrap: wrap; /* 요소들을 여러 줄로 나누어 배치 */
+  gap: 10px; /* 요소 사이의 간격 설정 */
+  padding-top:30px;
+  padding-left:400px;
+  padding-right:400px;
+  
+  
 }
 
 .loading {
   text-align: center;
-  font-size: 15px;
+  font-size: 30px;
+  padding-top:50px;
 }
 
-.movie_details_inf {
+/* MovieDetails  CSS */
+/* MovieDetails.css */
+
+/* 공통 스타일 */
+.movie_details {
   display: flex;
   flex-direction: column;
-  border: 3px solid blue;
-}
-.movie_inf {
-  display: flex;
-  flex-direction: raw;
-  border: 3px solid blue;
-}
-.movie_detail {
-  display: flex;
-  flex-direction: raw;
-  border: 3px solid blue;
+  align-items: center;
+  padding: 20px;
 }
 
-.comment__submit {
-  display: flex;
-  flex-direction: row;
-  border: 3px solid #96d35f;
-  width: 240px;
-}
+/* 상세 페이지 스타일 */
+.movie_details_page {
+  background: #d9d9d9;
+  box-shadow: 2px 2px 20px #dcdde4;
 
-.movie_details_comment {
+  border-radius: 1rem;
+  margin: auto;
+  
+  min-width: 400px;
+  width: 30%;
+  min-height: 70%;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  border: 3px solid #96d35f;
-  width: 240px;
+  gap: 1rem;
 }
 
-.footer {
-  background-size: 100% 50vh;
-  height: 50vh;
-  width: 100%;
-  background-image: url("../static/footer_image.png");
+/* 영화 이미지 스타일 */
+.movie_detail_img {
+  display: block;
+  margin: 0 auto;
+  align-items: center;
+  height: 40vh;
 }
 
-.genre_name {
-  font-size: 20px;
-  padding: 15px;
-  background-color: black;
+/* 영화 정보 스타일 */
+.movie_detail_inf {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 2px 10px #858585;
+  border-radius: 1rem;
+  background: #e9e7e7;
+  padding: 20px;
+  gap: 15px;
+}
+
+/* 장르 스타일 */
+.movie_detail_genre {
+  display: flex;
+}
+
+.movie_detail_genre div {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.movie_detail_genre div div {
+  background: #444444;
+  border-radius: 4px;
+  padding: 3px;
   color: white;
 }
+
+/* 줄거리 스타일 */
+.movie_detail_plot {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie_detail_plot > p {
+  font-size: small;
+}
+
+/* 댓글 스타일 */
+.movie_detail_comment {
+  box-shadow: 2px 2px 10px #858585;
+  border-radius: 1rem;
+  background: #e9e7e7;
+  padding: 20px;
+  gap: 10px;
+}
+
+/* 댓글 목록 스타일 */
+.movie_detail_commentList {
+  border: 2px solid #929292;
+  overflow-y: scroll;
+  height: 10vh;
+  margin: 15px;
+  border-radius: 1rem;
+  padding: 10px;
+}
+
+/* 댓글 입력 스타일 */
+.movie_detail_submit {
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie_detail_submit > input {
+  flex: 1;
+  height: 5vh;
+  margin-right: 10px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.movie_detail_submitButton {
+  padding: 8px 15px;
+  background-color: #4b4c4e;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* loading*/
+.loading {
+  color: white;
+}
+
+/* login-page*/
+
+.login_page {
+  margin: auto;
+  display: flex;
+  max-width: 100%;
+  height: 100vh;
+  margin-top: 4px;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  margin-top: -31px;
+  margin-bottom: 26px;
+  color: black;
+}
+.logform {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+
+  text-align: center;
+
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+/* .login_form {
+  /* display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items:center;
+  gap:5px; */
+/* } */
+
+.logform input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.logform button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background-color: #e32400;
+  background-image: linear-gradient(45deg, #444444, #000000);
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+label {
+  color: white;
+}
+
+.check {
+  color: red;
+}
+
+body {
+  background-color: #000000;
+  background-image: linear-gradient(40deg, #444444, #000000);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/*signup*/
+.signup_page {
+  /* width: 360px;*/
+  padding: 10% 0;
+
+  margin: auto;
+  display: flex;
+  max-width: 100%;
+
+  justify-content: center;
+  align-items: center;
+}
+
+/* header */
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+input {
+  background-color: #444444;
+}
+
+.header div {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.main_header_title {
+  display: flex;
+ flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: #FFF;
+  font-size: 60px;
+  padding-bottom:55px;
+}
+.first span br,
+.second span br{
+  display: none;
+}
+
+.first span,
+.second span {
+  align-items: center;
+  line-height: 1.2; 
+  
+  color: #ebebeb;
+  opacity: 0;
+  animation: titleShow 7s cubic-bezier(.25, .1, .25, 1) infinite,
+             titleHide 10s cubic-bezier(.25, .1, .25, 1) 10s infinite paused;
+}
+
+.first span {
+  animation-delay: 1s, 5s;
+  color:#ffffff;
+  font-size: 70px;
+  text-shadow: 2px 2px 2px gray;
+}
+
+.second span {
+  animation-delay: 1.7s, 5s;
+  color:#000000;
+  font-size: 90px;
+  text-shadow: 4px 2px 2px gray;
+  font-weight: bold;
+}
+
+
+
+
+@keyframes titleShow {
+  0% {
+    opacity: 0;
+  }
+  33%,
+  66% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes titleHide {
+   0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/*Search */
+
+.search > div {
+  color: #ffffff;
+  padding: 5px;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.header_search {
+  gap: 5px;
+}
+
+/*Error*/
+
+.error {
+  color: white;
+}
+
+/* 로그인 및 회원가입 버튼에 스타일 적용 */
+button {
+  padding: 5px 10px;
+  font-family: "Roboto";
+  font-weight: 500;
+  line-height: 12px;
+  border-radius: 15px;
+  display: block;
+  outline: none;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  background: #8a8b8f;
+  color: #fff;
+  box-shadow: 0 2px 8px -1px rgba(39, 94, 254, 0.32);
+  transform: translateY(0) translateZ(0);
+  transition: transform 0.44s ease, box-shadow 0.44s ease;
+}
+
+button:hover {
+  transform: translateY(-4px) translateZ(0);
+  box-shadow: 0 4px 20px -2px rgba(39, 94, 254, 0.5);
+}
+
+.logout-button {
+  background: #fff;
+  color: #000000;
+  box-shadow: 0 2px 8px -1px rgba(18, 22, 33, 0.04);
+}
+
+.login-button,
+.signup-button {
+  background: #fff;
+  color: #000000;
+  box-shadow: 0 2px 8px -1px rgba(18, 22, 33, 0.04);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.login-button:hover,
+.signup-button:hover {
+  box-shadow: 0 4px 20px -2px rgba(18, 22, 33, 0.12);
+}
+.check {
+  font-size: 10px;
+}
+
+  .footer{
+    background-size: 100% 50vh;
+  height: 20vh;
+  width: 100%;
+  display: flex;
+    color:white;
+    justify-content:center;
+    align-items:flex-end;
+    padding-bottom:10px;
+  }

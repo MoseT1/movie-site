@@ -1,53 +1,91 @@
 import "./App.css";
 import MovieList from "./MovieList.jsx";
 import { useState, useEffect } from "react";
+import Header from "./Header.jsx";
 
 export default function MainPage() {
-  const SERVER_API = "https://moviestates.codestates-seb.link/movies/top";
+  const SERVER_API =
+    "https://moviestates-alternative.codestates-seb.link/movies/top";
+  const GENRES_API =
+    "https://moviestates-alternative.codestates-seb.link/movies/genres";
 
-  const GENRES_API = "https://moviestates.codestates-seb.link/movies/genres";
-  // 1. 장르 종류 불러오기
   const [genres, setGenres] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState("TOP 10");
 
-  // 1-2. API, useEffect 이용해서 데이터 가져오기
   useEffect(() => {
     fetch(GENRES_API)
       .then((res) => res.json())
       .then((data) => setGenres(data));
   }, []);
 
-  // API에서 받아온 데이터가 res
-  // 자바스크립트 형식으로 바뀐 데이터가 data
-
-  // 2. 영화목록 MovieList에 맵핑하기
   return (
     <div>
       <main className="main_page">
+        <Header />
         <div className="main_header_image">
           <div className="main_header">
-            <label> M </label>
-            <label> O</label>
-            <label> V</label>
-            <label> I</label>
-            <label> E</label>
-            <label> L</label>
-            <label> I</label>
-            <label> S</label>
-            <label> T</label>
+            <h3 className="main_header_title">
+               <div className="first">
+       <span> W</span>
+      <span>E</span>
+      <span>L</span>
+      <span>C</span>
+      <span>O</span>
+      <span>M</span>
+      <span>E</span>
+                 <span>!</span>
+
+    </div>
+         
+    <div className="second">
+      
+      <span>M</span>
+      <span>O</span>
+      <span>V</span>
+      <span>I</span>
+      <span>E</span>
+      <span> </span>
+      <span>L</span>
+      <span>I</span>
+      <span>S</span>
+      <span>T</span>
+      </div>
+  
+           
+            </h3>
           </div>
         </div>
-
-        <MovieList genre={"TOP 10"} API={SERVER_API} />
-        {genres.map((result) => (
-          <MovieList
-            genre={result.name}
-            API={`https://moviestates.codestates-seb.link/movies/genre?page=1&limit=20&genreIds=${result.id}`}
-          />
-        ))}
+        <div className="genre_buttons">
+          {/* TOP 10 버튼 */}
+          {/* <button onClick={() => setSelectedGenre("TOP 10")}>TOP 10</button> */}
+          {/* 장르별 버튼 */}
+          {genres.map((result) => (
+            <button
+              key={result.id}
+              onClick={() => setSelectedGenre(result.name)}
+              className={selectedGenre === result.name ? "selected" : ""}
+            >
+              {result.name}
+            </button>
+          ))}
+        </div>
+        {selectedGenre === "TOP 10" && (
+          <MovieList genre={selectedGenre} API={SERVER_API} />
+        )}
+        {genres.map(
+          (result) =>
+            selectedGenre === result.name && (
+              <MovieList
+                key={result.id}
+                genre={result.name}
+                API={`https://moviestates-alternative.codestates-seb.link/movies/genre?page=1&limit=20&genreIds=${result.id}`}
+              />
+            )
+        )}
+        <footer className="footer">
+          <p>© 2023 Your Company. All rights reserved.</p>
+        </footer>
       </main>
-      <footer className="footer">
-        <p>© 2023 Your Company. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
